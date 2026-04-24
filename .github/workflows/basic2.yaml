@@ -1,0 +1,12 @@
+name: Basic GitHub Action pipeline
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  Basic:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Write into a file
+      run : echo "Hello from first Github Action pipeline"

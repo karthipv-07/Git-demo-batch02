@@ -1,0 +1,16 @@
+name: Basic1 GitHub Action pipeline
+
+on:
+  # workflow_dispatch: 
+  push:
+    branches: ["main"]
+  pull_request: 
+    branches: ["main"]
+
+jobs:
+  Basic:
+    runs-on: [self-hosted, Linux]
+
+    steps:
+    - name: Write into a file
+      run : echo "Hello from first Github Action pipeline"

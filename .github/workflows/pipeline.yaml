@@ -19,5 +19,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create env file
+        run: |
+          echo "PORT=3000" >> .env.development
+          echo "APP=GHA APP" >> .env.development
+
       - name: Run Application
-        run: node server.js
+        run: node server.js &

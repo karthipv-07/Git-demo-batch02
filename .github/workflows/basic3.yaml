@@ -12,3 +12,6 @@ jobs:
     steps:
     - name: Print a variable
       run : echo ${{ vars.VARDEMO }}
+
+    - name: Print a secret
+      run: echo ${{ secrets.SECRDEMO }}

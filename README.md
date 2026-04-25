@@ -1,2 +1,3 @@
-# Git-demo-batch02
-Demo purpose for batch02
+# NodeJsApp
+Revamp Academy Class
+DevOps with AWS

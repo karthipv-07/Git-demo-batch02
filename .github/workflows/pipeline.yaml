@@ -39,4 +39,9 @@ jobs:
           fi
 
       - name: Run Application
-        run: node server.js production &
+        run: |
+          node server.js "${{ github.event.inputs.environments }}" &
+          sleep 5
+          curl http://localhost:3000
+          curl http://localhost:3000/health
+          pkill -f "node server.js"

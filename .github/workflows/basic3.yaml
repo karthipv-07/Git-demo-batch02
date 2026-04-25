@@ -2,8 +2,8 @@ name: Secrets & Variables GitHub Action pipeline
 
 on:
   workflow_dispatch: 
-  push:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
 
 jobs:
   Basic:

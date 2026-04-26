@@ -15,6 +15,7 @@ on:
 jobs:
   Build:
     runs-on: [self-hosted, Linux]
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
 
     steps:
       - name: Clone the code
@@ -42,6 +43,6 @@ jobs:
         run: |
           node server.js "${{ github.event.inputs.environments }}" &
           sleep 5
-          curl http://localhost:3000
-          curl http://localhost:3000/health
+          curl http://localhost:8080
+          curl http://localhost:8080/health
           pkill -f "node server.js"

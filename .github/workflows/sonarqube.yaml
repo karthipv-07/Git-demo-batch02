@@ -17,7 +17,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v4
         with:
           args: >
-            -Dsonar.projectKey=Node_JS_App
+            -Dsonar.projectKey=NodeGHA
             -Dsonar.sources=.
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

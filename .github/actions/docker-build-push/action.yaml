@@ -31,4 +31,4 @@ runs:
 
     - name: Push image
       shell: bash
-      run: docker push ${{ inputs.DOCKERHUB_USERNAME }}/nodeapp2:${{ env.SHORT_SHA }}
+      run: docker push ${{ inputs.username }}/nodeapp2:${{ env.SHORT_SHA }}

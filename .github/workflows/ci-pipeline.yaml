@@ -1,0 +1,42 @@
+name: Complete CI Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  sonar:
+    runs-on: [self-hosted, Linux]
+    if: github.event_name == 'pull_request'
+  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+    
+      - name: Sonarqube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        with:
+          args: >
+           -Dsonar.projectKey=NodeGHA
+            -Dsonar.sources=.
+            -Dsonar.qualitygate.wait=true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+
+  docker:
+    runs-on: [self-hosted, Linux]
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Dockerhub push
+        uses: karthipv-07/Git-demo-batch02/.github/actions/docker-build-push@main
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
